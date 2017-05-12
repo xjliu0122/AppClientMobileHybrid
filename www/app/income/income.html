@@ -1,0 +1,36 @@
+<ion-view title="Income" cache-view="false" ng-init="initIncome()">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon dark icon ion-ios-search" ng-click="searchPopover($event)"></button>
+    </ion-nav-buttons>
+    <ion-content class="has-header has-footer" scroll="yes">
+        <ion-refresher pulling-text="" on-refresh="getIncomeDocumentsRefresh()">
+        </ion-refresher>
+        <div>
+            <div class="row responsive-md">
+                <div class="col col-50" style="margin-bottom:0px" ng-repeat="doc in docs" ui-sref="">
+                    <div class="card hybrid">
+                        <div class="item item-thumbnail-right item-text-wrap">
+                            <img ng-src="{{doc.thumbnail}}" ng-if="doc.thumbnail != null" ng-click="showImagePopover($index)" />
+                            <h2 class="balanced">{{doc.date}}<!-- {{post.author}} --></h2>
+                            <p ng-if="doc.comment != null">{{doc.comment}}</p>
+                            <p ng-if="doc.location != null">{{doc.location}}</p>
+                            <span class="interact">
+                           <!--  <i class="icon calm" ng-class="{'ion-ios-heart': liked, 'ion-ios-heart-outline': !liked }" ng-click="liked = !liked"> {{post.likes.length}}</i> -->
+                           <!--  <i class="icon ion-ios-chatbubble-outline calm"> {{post.comments.length}}</i> -->
+                            </span>
+                            <span class="text-small font-thin pull-right" am-time-ago="{{post.publishedDate}}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ion-infinite-scroll on-infinite="getIncomeDocumentsLoad()" distance="10%" ng-if="hasMoreData">
+        </ion-infinite-scroll>
+    </ion-content>
+    <ion-tabs class="tabs-balanced tabs-icon-top">
+        <ion-tab title="Uploads" icon-on="ion-ios-filing" icon-off="ion-ios-filing-outline"></ion-tab>
+        <ion-tab title="Pending" icon-on="ion-ios-clock" icon-off="ion-ios-clock-outline"></ion-tab>
+        <ion-tab title="Processed" icon-on="ion-social-usd" icon-off="ion-social-usd-outline"></ion-tab>
+    </ion-tabs>
+    <a class="btn-floating btn-large waves-effect waves-light red lighten-1" style="position:fixed; bottom:6%;right:5%;z-index:999" ng-click="addIncomeDocument()"><i class="icons ion-plus"></i></a>
+</ion-view>

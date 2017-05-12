@@ -1,0 +1,34 @@
+<ion-view title="Expenses" cache-view="false" ng-init="initExpense()">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon dark icon ion-ios-search" ng-click="searchPopover($event)"></button>
+    </ion-nav-buttons>
+    <ion-content class="has-header has-footer" scroll="yes">
+        <ion-refresher pulling-text="Pull to refresh..." >
+        </ion-refresher>
+        <div>
+            <div class="row responsive-md">
+                <div class="col col-50" ng-repeat="post in news.items | orderBy: 'publishedDate':true " ui-sref="">
+                    <div class="card hybrid">
+                        <div class="item item-thumbnail-right item-text-wrap">
+                            <img ng-src="{{post.image}}" ng-click="showImagePopover($index)" />
+                            <h2 class="balanced">09/12/2017<!-- {{post.author}} --></h2>
+                            <p class="balanced">Meal/Transportation: USD 9.87</p>
+                            <p>Los Angeles, CA</p>
+                            <span class="interact">
+                           <!--  <i class="icon calm" ng-class="{'ion-ios-heart': liked, 'ion-ios-heart-outline': !liked }" ng-click="liked = !liked"> {{post.likes.length}}</i> -->
+                            <i class="icon ion-ios-chatbubble-outline calm"> {{post.comments.length}}</i>
+                            </span>
+                            <span class="text-small font-thin pull-right" am-time-ago="{{post.publishedDate}}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <ion-tabs class="tabs-balanced tabs-icon-top">
+        <ion-tab title="Uploads" icon-on="ion-ios-filing" icon-off="ion-ios-filing-outline"></ion-tab>       
+        <ion-tab title="Pending" icon-on="ion-ios-help" icon-off="ion-ios-help-outline"></ion-tab>
+         <ion-tab title="Matched" icon-on="ion-ios-paper" icon-off="ion-ios-paper-outline"></ion-tab>
+    </ion-tabs>
+    <a class="btn-floating btn-large waves-effect waves-light red lighten-1" style="position:fixed; bottom:6%;right:5%;z-index:999" ng-click="newsPopover.show($event);"><i class="icons ion-plus"></i></a>
+</ion-view>

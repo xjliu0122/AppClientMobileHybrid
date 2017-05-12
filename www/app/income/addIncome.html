@@ -1,0 +1,32 @@
+<ion-view title="Add Income" cache-view="false" ng-init="initAddIncome()">
+    <form name="addIncomeForm" novalidate scroll="yes">
+        <ion-content class="has-header has-footer">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Comment</span>
+                <input type="text" placeholder="Comment" ng-model="incomeToAdd.comment" ng-required="false" />
+                <!-- "reminder.type=== 'Add Call'" /> -->
+            </label>        
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Date</span>
+                <input type="date" placeholder="Date" ng-model="incomeToAdd.Date" ng-required="false" />
+            </label>
+
+            <label class="item item-input">
+                <span class="input-label">Location</span>
+                <ion-google-place ng-model="incomeToAdd.location" current-location="true" />
+            </label>
+            <ion-slide-box show-pager="false">
+                <ion-slide>
+                     <img id='picImg' class="add-image" ng-src="{{incomeToAdd.imgURI}}" />
+                </ion-slide>
+            </ion-slide-box>
+        </ion-content>
+    </form>
+    <ion-footer-bar align-title="center" class="add-image-footer bar-balanced">
+        <div class="button-bar">
+            <a class="camera button button-balanced ion-ios-camera-outline" ng-click="takePicture()"></a>
+            <a class="album button button-balanced ion-ios-albums-outline"></a>
+            <a class="send button button-balanced ion-paper-airplane" ng-click="uploadIncomeDoc()"></a>
+        </div>
+    </ion-footer-bar>
+</ion-view>

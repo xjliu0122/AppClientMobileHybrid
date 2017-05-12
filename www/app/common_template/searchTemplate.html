@@ -1,0 +1,11 @@
+<ion-popover-view class="search">
+    <ion-content scroll="false">
+        <div class="list item-input-inset">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" placeholder="Search" ng-model="searchText" ng-model-options="{ debounce: 550 }" ng-change="getSearch(searchText)" />
+            </label>
+            <i class="icon ion-close" ng-show="searchText" ng-click="getSearch('');popover.hide($event);searchText=''"></i>
+        </div>
+    </ion-content>
+</ion-popover-view>

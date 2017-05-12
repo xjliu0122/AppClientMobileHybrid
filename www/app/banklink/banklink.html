@@ -1,0 +1,36 @@
+<ion-view title="Banks" cache-view="false" ng-init="initBank()">
+    <ion-content class="has-header has-footer" scroll="no">
+        <ion-refresher pulling-text="Pull to refresh...">
+        </ion-refresher>
+        <ion-list can-swipe="true">
+            <!--  ng-controller="MyCtrl" -->
+            <div class="card hybrid">
+                <ion-item class="item item-thumbnail-right item-text-wrap" style="margin-top:2px">
+                    <!-- ng-repeat="item in items" -->
+                    <h2>Checking Account</h2>
+                    <h3>USD: 997.32</h3>
+                    <ion-option-button class="button-assertive" ng-click="edit(item)">
+                        Delete
+                    </ion-option-button>
+                </ion-item>
+            </div>
+            <div class="card hybrid">
+                <ion-item class="item item-thumbnail-right item-text-wrap" style="margin-top:2px">
+                    <!-- ng-repeat="item in items" -->
+                    <h2>Checking Account</h2>
+                    <h3>USD: 997.32</h3>
+                    <ion-option-button class="button-assertive" ng-click="edit(item)">
+                        Delete
+                    </ion-option-button>
+                </ion-item>
+            </div>
+            </div>
+        </ion-list>
+    </ion-content>
+    <ion-footer-bar align-title="center" class="add-bank-footer bar-balanced">
+        <div class="button-bar">
+            <a class="linkBank button button-balanced ion-ios-plus-outline" ng-click="onClick()"></a>
+        </div>
+    </ion-footer-bar>
+    <!--     <a class="btn-floating btn-large waves-effect waves-light red lighten-1" style="position:fixed; bottom:6%;right:5%;z-index:999" ng-click="newsPopover.show($event);"><i class="icons ion-plus"></i></a>
+ --></ion-view>
